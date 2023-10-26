@@ -1,6 +1,7 @@
 from django.shortcuts import render , redirect
 from django.contrib.auth.models import User , auth
 from django.contrib import messages
+from .models import Profile
 # from django.http import HttpResponse
 
 
@@ -24,8 +25,13 @@ def signup(request):
             else:
                 user = User.objects.create_user(username=username,email=email,password=password)
                 user.save()
-                messages.success(request,'The account has been created successfully')
-                return redirect('signup')
+                
+                # log user in and redirect to seetings page
+                #create a profile object for the new user
+                user_model = User.objects.get(username=username)
+                new_profile = Profile.objects.create(user=user_model,id_user=user_model.id)
+                new_profile.save()
+                return redirect('signup') #login
         else:
             messages.info(request,'The Password Not Matching')
             return redirect('signup')
