@@ -15,7 +15,6 @@ def index(request):
     return render(request, 'index.html',{'user_profile':user_profile, 'posts':posts})
 
 
-
 @login_required(login_url='signin')
 def upload(request):
 
@@ -30,6 +29,12 @@ def upload(request):
         return redirect('/')
     else:
         return redirect('/')
+
+
+@login_required(login_url='signin')
+def like_post(request):
+    pass
+
 
 
 @login_required(login_url='signin')
