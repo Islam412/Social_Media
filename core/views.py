@@ -120,6 +120,11 @@ def settings(request):
     return render(request,'setting.html',{'user_profile':user_profile})
 
 
+@login_required(login_url='signin')
+def follow(request):
+    pass
+
+
 def signup(request):
     if request.method == 'POST':
         username = request.POST['username']
