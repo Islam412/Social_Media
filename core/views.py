@@ -70,6 +70,29 @@ def profile(request,pk):
     return render(request,'profile.html',context)
 
 
+
+
+# @login_required(login_url='signin')
+# def settings(request):
+#     user_profile = Profile.objects.get(user=request.user)
+    
+#     if request.method == 'POST':
+#         image = request.FILES.get('image')
+#         bio = request.POST.get('bio')
+#         location = request.POST.get('location')
+
+#         if image:
+#             user_profile.profileimg = image
+        
+#         user_profile.bio = bio
+#         user_profile.location = location
+#         user_profile.save()
+        
+#         return redirect('settings')  # Redirect to the same page after saving the settings
+    
+#     return render(request, 'setting.html', {'user_profile': user_profile})
+
+
 @login_required(login_url='signin')
 def settings(request):
     user_profile = Profile.objects.get(user=request.user)
