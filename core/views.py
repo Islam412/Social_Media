@@ -210,7 +210,7 @@ def logout(request):
 
 
 
-
+#space of setting file
 # @login_required(login_url='signin')
 # def settings(request):
 #     user_profile = Profile.objects.get(user=request.user)
