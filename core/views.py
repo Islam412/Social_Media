@@ -68,14 +68,11 @@ def profile(request,pk):
     if FollowersCount.objects.filter(follower=follower,user=user).first():
         button_text = 'Unfollow'
 
-        user_followers = len(FollowersCount.objects.filter(user=pk))
-        user_following = len(FollowersCount.objects.filter(follower=pk))
-
     else:
         button_text = 'Follow'
 
-        user_followers = len(FollowersCount.objects.filter(user=pk))
-        user_following = len(FollowersCount.objects.filter(follower=pk))
+    user_followers = len(FollowersCount.objects.filter(user=pk))
+    user_following = len(FollowersCount.objects.filter(follower=pk))
 
 
     context = {
