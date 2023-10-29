@@ -122,13 +122,18 @@ def settings(request):
 
 @login_required(login_url='signin')
 def follow(request):
-    if request.method == POST:
+    if request.method == 'POST':
         follower = request.POST['follower']
         user = request.POST['user']
         
         if FollowersCount.objects.filter(follower=follower,user=user).first():
             delete_follower = FollowersCount.objects.get(follower=follower,user=user)
             delete_follower.delete()
+            return redirect('/profile/'+user)
+        
+        else:
+            new_follower = FollowersCount.objects.create(follower=follower,user=user)
+            new_follower.save()
             return redirect('/profile/'+user)
 
     else:
