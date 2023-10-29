@@ -46,6 +46,9 @@ def upload(request):
         return redirect('/')
 
 
+def search(request):
+    return render(request,'search.html')
+
 @login_required(login_url='signin')
 def like_post(request):
     username = request.user.username
