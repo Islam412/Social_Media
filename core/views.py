@@ -64,13 +64,13 @@ def profile(request,pk):
     follower = request.user.username
     user = pk
 
+
     if FollowersCount.objects.filter(follower=follower,user=user).first():
         button_text = 'Unfollow'
     else:
         button_text = 'Follow'
 
 
-    if FollowersCount.objects.filter(follower=follower,user=user).exists():
         user_followers = len(FollowersCount.objects.filter(user=pk))
         user_following = len(FollowersCount.objects.filter(follower=pk))
 
