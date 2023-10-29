@@ -46,8 +46,13 @@ def upload(request):
         return redirect('/')
 
 
+
+@login_required(login_url='signin')
 def search(request):
+
     return render(request,'search.html')
+
+
 
 @login_required(login_url='signin')
 def like_post(request):
