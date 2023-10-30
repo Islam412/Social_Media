@@ -54,22 +54,22 @@ def search(request):
 
     if request.method == 'POST':
         username = request.POST['username']
-        username_object = User.objects.filter(username__icontains=username)
+        username_object = User.objects.filter(username__icontain=username)
 
         username_profile = []
         username_profile_list = []
 
-        for user in username_object:
-            username_profile.append(user.id)
+        for users in username_object:
+            username_profile.append(users.id)
 
         for id in username_profile:
-            profile_lists = Profile.objects.filter(id=id)
+            profile_lists = Profile.objects.filter(user.id==id)
             username_profile_list.append(profile_lists)
 
         username_profile_list = list(chain(*username_profile_list))
 
 
-    return render(request,'search.html',{'user_profile':user_profile, 'username_profile_list':username_profile_list})
+    return render(request,'search.html',{'user_profile':user_profile, 'user_profile':username_profile_list})
 
 
 
