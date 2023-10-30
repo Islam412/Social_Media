@@ -327,9 +327,10 @@
                             <div class="search-result-item-body">
                                 <div class="row">
                                     <div class="col-sm-9">
-                                        <h4 class="search-result-item-heading"><a href="/profile/{{item.user}}"><b>{{item.username}}</b></a></h4>
-                                        <p class="info">{{item.location}}</p>
+                                        <h4 class="search-result-item-heading"><a href="/profile/{{item.user}}"><b>{{item.user.username}}</b></a></h4>
+                                        <!-- <p class="description">{{item.bio}}</p> -->
                                         <p class="description">{{item.bio}}</p>
+                                        <p class="info">{{item.location}}</p>
                                     </div>
                                     <!-- <div class="col-sm-3 text-align-center">
                                         <p class="value3 mt-sm">$9, 700</p>
