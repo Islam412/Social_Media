@@ -5,6 +5,7 @@ from django.contrib.auth.decorators import login_required
 from .models import Profile ,Post ,LikePost ,FollowersCount
 from itertools import chain
 from django.http import HttpResponse
+from django.http import Http404
 
 
 @login_required(login_url='signin')
@@ -47,29 +48,22 @@ def upload(request):
 
 
 
+
 @login_required(login_url='signin')
 def search(request):
-    user_object = User.objects.get(username=request.user.username)
-    user_profile = Profile.objects.get(user=user_object)
+    user_object = User.objects.filter(username=request.user.username).first()
+    user_profile = Profile.objects.filter(user=user_object).first() if user_object else None
 
-    if request.method == 'POST':
-        username = request.POST['username']
-        username_object = User.objects.filter(username__icontain=username)
+    username_profile_list = []
+    if request.method == 'POST' and user_profile:
+        username = request.POST.get('username', '')
+        username_object = User.objects.filter(username__icontains=username)
 
-        username_profile = []
-        username_profile_list = []
+        for user in username_object:
+            profile_lists = Profile.objects.filter(user=user)
+            username_profile_list.extend(profile_lists)
 
-        for users in username_object:
-            username_profile.append(users.id)
-
-        for id in username_profile:
-            profile_lists = Profile.objects.filter(user.id==id)
-            username_profile_list.append(profile_lists)
-
-        username_profile_list = list(chain(*username_profile_list))
-
-
-    return render(request,'search.html',{'user_profile':user_profile, 'username_profile_list':username_profile_list})
+    return render(request, 'search.html', {'user_profile': user_profile, 'username_profile_list': username_profile_list})
 
 
 
