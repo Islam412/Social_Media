@@ -60,7 +60,7 @@
     
                             <!-- notivication header -->
                             <div class="px-4 py-3 -mx-5 -mt-4 mb-5 border-b">
-                                <h4>Upload Pics</h4>
+                                <h4>Upload Post</h4>
                             </div>
     
                             <!-- notification contents -->
@@ -68,17 +68,15 @@
         
                                     <div class="flex flex-col choose-upload text-center">
                                     
-                                        <div class="bg-gray-100 border-2 border-dashed flex flex-col h-24 items-center justify-center relative w-full rounded-lg  ">
-                                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-12">
+                                        <div>
+                                            {% comment %} <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-12">
                                                 <path d="M5.5 13a3.5 3.5 0 01-.369-6.98 4 4 0 117.753-1.977A4.5 4.5 0 1113.5 13H11V9.413l1.293 1.293a1 1 0 001.414-1.414l-3-3a1 1 0 00-1.414 0l-3 3a1 1 0 001.414 1.414L9 9.414V13H5.5z" />
                                                 <path d="M9 13h2v5a1 1 0 11-2 0v-5z" />
-                                            </svg>
+                                            </svg> {% endcomment %}
                                         </div>
                                         <form action="upload" method="POST" enctype="multipart/form-data">
                                             {% csrf_token %}
-                                            <p class="my-3 leading-6"> Upload pics
                                                 <br>
-                                            </p>
                                             <div>
                                                 <input type="file" name="image_upload ">
                                                 <!-- <a href="#" class="button soft-warning small"> Choose file</a> -->
@@ -205,17 +203,17 @@
                                 <!-- post header-->
                                 <div class="flex justify-between items-center px-4 py-3">
                                     <div class="flex flex-1 items-center space-x-4">
-                                        <a href="#">
+                                        {% comment %} <a href="#">
                                             <div class="bg-gradient-to-tr from-yellow-600 to-pink-600 p-0.5 rounded-full">  
                                                 <img src="{% static 'assets/images/avatars/avatar-2.jpg' %}" class="bg-gray-200 border border-white rounded-full w-8 h-8">
                                             </div>
-                                        </a>
+                                        </a> {% endcomment %}
                                         <span class="block capitalize font-semibold "> <a href="/profile/{{post.user}}"><strong>{{post.user}}</strong></a> </span>
                                     </div>
                                 <div>
-                                    <a href="#"> <i class="icon-feather-more-horizontal text-2xl hover:bg-gray-200 rounded-full p-2 transition -mr-1 "></i> </a>
+                                    {% comment %} <a href="#"> <i class="icon-feather-more-horizontal text-2xl hover:bg-gray-200 rounded-full p-2 transition -mr-1 "></i> </a> {% endcomment %}
                                     <div class="bg-white w-56 shadow-md mx-auto p-2 mt-12 rounded-md text-gray-500 hidden text-base border border-gray-100  " uk-drop="mode: hover;pos: top-right">
-                                
+                                        {% comment %}                                 
                                         <ul class="space-y-1">
                                         <li> 
                                             <a href="#" class="flex items-center px-3 py-2 hover:bg-gray-200 hover:text-gray-800 rounded-md ">
@@ -246,7 +244,7 @@
                                             </a> 
                                         </li>
                                         </ul>
-                                    
+                                     {% endcomment %}
                                     </div>
                                 </div>
                                 </div>
@@ -349,7 +347,7 @@
 
                             <div class="bg-gray-50  border-b border-gray-100 flex items-baseline justify-between py-4 px-6 ">
                                 <h2 class="font-semibold text-lg">Users You Can Follow</h2>
-                                <a href="#"> Refresh</a>
+                                <a href="/"> Refresh</a>
                             </div>
                            
                             <div class="divide-gray-300 divide-gray-50 divide-opacity-50 divide-y px-4 ">
